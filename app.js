@@ -32,8 +32,7 @@ const laptopTitleHeader = document.getElementById("laptopTitleHeader");
 const pricePTag = document.getElementById("pricePTag");
 const featuresWritten = document.getElementById("featuresWritten");
 const imgContainer = document.getElementById("imgContainer");
-const imageUrl = "https://noroff-komputer-store-api.herokuapp.com/computers";
-const komputerUrl = "https://noroff-komputer-store-api.herokuapp.com/computers";
+const komputerUrl = "https://computer-api-production.up.railway.app/computers";
 fetch(komputerUrl)
   .then((Response) => Response.json())
   .then((ResponseJeson) => {
@@ -65,7 +64,7 @@ fetch(komputerUrl)
       });
     }
   });
-fetch(imageUrl)
+fetch(komputerUrl)
   .then((response) => response.json())
   .then((imageBlob) => {
     dropdownElements.addEventListener("click", (e) => {
