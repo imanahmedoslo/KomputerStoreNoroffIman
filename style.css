@@ -1,0 +1,136 @@
+.dropDown {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 0.25rem;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+  transform: translateY(-10px);
+  transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+  border-radius: 3px;
+  width: 200px;
+  margin-top: 5px;
+}
+nav {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.optionsDiv {
+  position: fixed;
+  left: 0;
+  top: calc(100% + 0.25rem);
+  background-color: white;
+  border-radius: 0.25rem;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+  transform: translateY(-10px);
+  transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+  pointer-events: none;
+  opacity: 0;
+  cursor: pointer;
+}
+.dropDown.active > .dropDownButton + .optionsDiv {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  font-size: small;
+}
+.dropDownButton {
+  color: black;
+  cursor: pointer;
+}
+.fixDDB {
+  display: flex;
+  flex-direction: row;
+  width: 152px;
+  height: 27px;
+}
+.secondArrow {
+  cursor: pointer;
+}
+.flx {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 500px;
+}
+.laptopSelectionDiv {
+  background-color: white;
+  border-radius: 0.25rem;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+  transform: translateY(-10px);
+  transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+.featuresNotWritten {
+  opacity: 1;
+}
+.featuresWritten {
+  opacity: 1;
+}
+.bankDiv {
+  display: flex;
+  flex-direction: row;
+}
+.visiblie {
+  opacity: 1;
+  height: 100px;
+  width: 100px;
+}
+.hidden {
+  opacity: 0;
+}
+.show {
+  opacity: 1;
+}
+.imanBank {
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+  transform: translateY(-10px);
+  transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+  border-radius: 3px;
+  width: 300px;
+  margin-top: 5px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.workingDiv {
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+  transform: translateY(-10px);
+  transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+  border-radius: 3px;
+  width: 300px;
+  margin-top: 5px;
+  height: 300px;
+  padding-left: 30px;
+}
+.featuresDiv {
+  height: fit-content;
+  font-size: small;
+}
+.featuresDiv p {
+  margin: 0;
+}
+.getALoanButton {
+  height: 40px;
+  width: 100px;
+  background-color: #20c997;
+  color: white;
+}
+.imgPc {
+  width: 250px;
+  height: 200px;
+  border-radius: 3px;
+}
