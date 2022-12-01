@@ -11,6 +11,9 @@ const boughtPcs = document.getElementById("boughtPcs");
 const laptopTitleHeader = document.getElementById("laptopTitleHeader");
 const laptopPricetag = document.getElementById("pricePTag");
 const buyPcButton = document.getElementById("buyBotton");
+const formatter = new Intl.NumberFormat('no-NO', {
+        style: 'currency',
+        currency: 'NOK',});
 
 var counter = 0;
 var ownedMoney = 0;
@@ -23,7 +26,7 @@ let wage = payBalance.innerText;
 function workFunction() {
   workButton.addEventListener("click", (e) => {
     counter = counter + 100;
-    payBalance.innerText = counter;
+    payBalance.innerText = formatter.format(counter);
   });
 }
 
@@ -34,10 +37,10 @@ function transferToBank() {
     if (isInDebt == false) {
       ownedMoney = ownedMoney + counter;
       counter = 0;
-      payBalance.innerText = counter;
+      payBalance.innerText =formatter.format(counter);
       console.log(typeof ownedMoney);
       console.log(typeof counter);
-      bankBalance.innerText = ownedMoney;
+      bankBalance.innerText = formatter.format(ownedMoney);
       return;
     } else if (isInDebt == true) {
       tenPercent = counter * 0.1;
@@ -45,10 +48,10 @@ function transferToBank() {
         debtAmount = 0;
         tenPercent = tenPercent - debtAmount;
         ownedMoney = ownedMoney + (counter - tenPercent);
-        bankBalance.innerText = ownedMoney;
-        remainingDebtDiv.innerText = debtAmount;
+        bankBalance.innerText = formatter.format(ownedMoney);
+        remainingDebtDiv.innerText = formatter.format(debtAmount);
         counter = 0;
-        payBalance.innerText = counter;
+        payBalance.innerText = formatter.format(counter);
         isInDebt = false;
         debtDiv.classList.remove("show");
         payBackLoanButton.classList.remove("show");
@@ -56,10 +59,10 @@ function transferToBank() {
       } else {
         debtAmount = debtAmount - tenPercent;
         ownedMoney = ownedMoney + (counter - tenPercent);
-        bankBalance.innerText = ownedMoney;
-        remainingDebtDiv.innerText = debtAmount;
+        bankBalance.innerText = formatter.format(ownedMoney);
+        remainingDebtDiv.innerText = formatter.format(debtAmount);
         counter = 0;
-        payBalance.innerText = counter;
+        payBalance.innerText = formatter.format(counter);
         return;
       }
       return;
@@ -73,12 +76,12 @@ let pcBought = false;
 
 function loanFunction() {
   getALoanButton.addEventListener("click", (e) => {
-    counter = parseInt(payBalance.innerText);
-    debtAmount = parseInt(remainingDebtDiv.innerText);
-    ownedMoney = parseInt(bankBalance.innerText);
+    // counter = parseInt(payBalance.innerText);
+    // debtAmount = parseInt(remainingDebtDiv.innerText);
+    // ownedMoney = parseInt(bankBalance.innerText);
     console.log(debtAmount);
     if (isInDebt == true) {
-      console.log(debtAmount);
+      console.log("i got the changes");
       let pleasePayBack = alert("please pay back first!");
       return;
     } else if (loansCounter == !0 && pcBought == false && debtAmount === 0) {
@@ -98,9 +101,9 @@ function loanFunction() {
         debtDiv.classList.add("show");
         payBackLoanButton.classList.add("show");
         ownedMoney = ownedMoney + writtenAmount;
-        bankBalance.innerText = ownedMoney;
+        bankBalance.innerText = formatter.format(ownedMoney);
         debtAmount = debtAmount + writtenAmount;
-        remainingDebtDiv.innerText = debtAmount;
+        remainingDebtDiv.innerText = formatter.format(debtAmount);
         loansCounter = 1;
         isInDebt = true;
         pcBought = false;
@@ -113,18 +116,22 @@ function loanFunction() {
 function paybackLoanFunction() {
   payBackLoanButton.addEventListener("click", (e) => {
     if (debtAmount > counter) {
-      remainingDebtDiv.innerText = debtAmount - counter;
+        debtAmount= debtAmount-counter
+      remainingDebtDiv.innerText = formatter.format(debtAmount);
+      console.log(counter)
+      console.log(debtAmount)
+      console.log(ownedMoney)
       counter = 0;
-      payBalance.innerText = counter;
+      payBalance.innerText = formatter.format (counter);
       return;
     } else if (debtAmount <= counter) {
       console.log("I was triggered1");
       ownedMoney = ownedMoney + (counter - debtAmount);
       debtAmount = 0;
-      remainingDebtDiv.innerText = debtAmount;
-      bankBalance.innerText = ownedMoney;
+      remainingDebtDiv.innerText = formatter.format (debtAmount);
+      bankBalance.innerText = formatter.format (ownedMoney);
       counter = 0;
-      payBalance.innerText = counter;
+      payBalance.innerText = formatter.format (counter);
       isInDebt = false;
       debtDiv.classList.remove("show");
       payBackLoanButton.classList.remove("show");
@@ -161,7 +168,7 @@ const buyPc = buyPcButton.addEventListener("click", (e) => {
         newPurchase.innerText = `you have purchased a ${laptopTitleHeader.innerText}`;
         boughtPcs.appendChild(newPurchase);
         ownedMoney = ownedMoney - pcPrice;
-        bankBalance.innerText = ownedMoney;
+        bankBalance.innerText = formatter.format (ownedMoney);
         pcBought = true;
         a = a + 1;
         return;
@@ -176,7 +183,7 @@ const buyPc = buyPcButton.addEventListener("click", (e) => {
           console.log(repeatedpurchase);
           boughtPcs.appendChild(repeatedpurchase);
           ownedMoney = ownedMoney - pcPrice;
-          bankBalance.innerText = ownedMoney;
+          bankBalance.innerText = formatter.format (ownedMoney);
           pcBought = true;
 
           return;
